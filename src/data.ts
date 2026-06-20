@@ -17,6 +17,46 @@ export interface WeekData {
   days: DayContent[];
 }
 
+export type SupplyEvidenceType =
+  | '公司披露'
+  | '公司业绩会披露'
+  | '上游设备商披露'
+  | '行业研究'
+  | '公司产品披露+推断'
+  | '官方机构'
+
+export interface SupplyCycleSnapshotItem {
+  id: string;
+  segment: string;
+  oldStatus2024: string;
+  currentStatus: string;
+  supplyScore: number;
+  priceMomentum: number;
+  latestMetric: string;
+  period: string;
+  evidenceType: SupplyEvidenceType;
+  confidence: '高' | '中高' | '中低';
+  leadingIndicator: string;
+  reversalSignal: string;
+  sourceTitle: string;
+  sourceUrl: string;
+}
+
+export const supplyCycleAsOf = '2026-06-20';
+
+export const supplyCycleSnapshot2026: SupplyCycleSnapshotItem[] = [
+  { id: 'SC-01', segment: 'AI加速器/GPU', oldStatus2024: '紧缺', currentStatus: '紧缺', supplyScore: 2, priceMomentum: 1, latestMetric: 'NVIDIA季度收入816亿美元，环比+20%，同比+85%', period: 'FY2027 Q1 ended 2026-04-26', evidenceType: '公司披露', confidence: '高', leadingIndicator: 'AI基础设施收入与交付节奏', reversalSignal: '收入/指引连续两季减速且库存上升', sourceTitle: 'NVIDIA Q1 FY2027 Results', sourceUrl: 'https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx' },
+  { id: 'SC-02', segment: 'CoWoS先进封装', oldStatus2024: '紧缺', currentStatus: '紧缺', supplyScore: 2, priceMomentum: 1, latestMetric: 'TSMC称当前主流供给仍是大尺寸CoWoS；未披露精确利用率', period: '2026 Q1', evidenceType: '公司业绩会披露', confidence: '中高', leadingIndicator: '先进封装扩产与设备到位', reversalSignal: '客户交期显著缩短或产能利用率跌破90%', sourceTitle: 'TSMC Q1 2026 Earnings Call Transcript', sourceUrl: 'https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-04/3cef85204275f94fd111485cfdf4adb3c0263c45/TSMC%201Q26%20Transcript.pdf' },
+  { id: 'SC-03', segment: 'HBM', oldStatus2024: '紧缺', currentStatus: '紧缺', supplyScore: 2, priceMomentum: 2, latestMetric: 'SK hynix Q1收入52.5763万亿韩元、营业利润率72%；AI高附加值内存需求强', period: '2026 Q1', evidenceType: '公司披露', confidence: '高', leadingIndicator: 'HBM4量产与长期协议覆盖', reversalSignal: 'HBM ASP下降且库存/交期同步上升', sourceTitle: 'SK hynix Q1 2026 Results', sourceUrl: 'https://news.skhynix.com/q1-2026-business-results/' },
+  { id: 'SC-04', segment: '先进逻辑制程', oldStatus2024: '分化', currentStatus: '紧缺', supplyScore: 2, priceMomentum: 1, latestMetric: 'ASML称先进逻辑与内存需求持续超过供给，限制预计延续至2026年以后', period: '2026 Q1', evidenceType: '上游设备商披露', confidence: '高', leadingIndicator: '先进节点客户扩产与ASML订单', reversalSignal: '先进节点利用率下滑或客户推迟扩产', sourceTitle: 'ASML Q1 2026 Results', sourceUrl: 'https://www.asml.com/en/news/press-releases/2026/q1-2026-financial-results' },
+  { id: 'SC-05', segment: '成熟制程', oldStatus2024: '产能过剩', currentStatus: '复苏/趋平衡', supplyScore: 0.5, priceMomentum: 0, latestMetric: 'UMC利用率79%，晶圆出货量环比+2.7%，22nm收入占比14%', period: '2026 Q1', evidenceType: '公司披露', confidence: '高', leadingIndicator: '利用率与22nm收入占比', reversalSignal: '利用率重新跌破70%并出现降价', sourceTitle: 'UMC Q1 2026 Results', sourceUrl: 'https://www.nasdaq.com/press-release/umc-reports-first-quarter-2026-results-2026-04-29' },
+  { id: 'SC-06', segment: '标准DRAM', oldStatus2024: '偏紧', currentStatus: '严重紧缺', supplyScore: 2, priceMomentum: 2, latestMetric: 'TrendForce预计Q2一般型DRAM合约价环比+58%至+63%', period: '2026 Q2 forecast', evidenceType: '行业研究', confidence: '中高', leadingIndicator: '供应商库存与HBM转产比例', reversalSignal: '合约价转跌且供应商库存回升', sourceTitle: 'TrendForce Q2 2026 Memory Price Forecast', sourceUrl: 'https://www.trendforce.com/presscenter/news/20260331-12995.html' },
+  { id: 'SC-07', segment: 'NAND Flash', oldStatus2024: '供过于求', currentStatus: '严重紧缺', supplyScore: 2, priceMomentum: 2, latestMetric: 'TrendForce预计Q2 NAND Flash合约价环比+70%至+75%', period: '2026 Q2 forecast', evidenceType: '行业研究', confidence: '中高', leadingIndicator: '企业级SSD需求与供应商bit growth', reversalSignal: '合约价转跌或新增产能超预期', sourceTitle: 'TrendForce Q2 2026 Memory Price Forecast', sourceUrl: 'https://www.trendforce.com/presscenter/news/20260331-12995.html' },
+  { id: 'SC-08', segment: '光模块/高速互连', oldStatus2024: '供需平衡', currentStatus: '需求强/披露不足', supplyScore: 1, priceMomentum: 1, latestMetric: '1.6T产品持续导入，但公开来源缺少行业统一利用率与ASP口径', period: '2026 H1', evidenceType: '公司产品披露+推断', confidence: '中低', leadingIndicator: '1.6T认证与出货、DSP供应', reversalSignal: 'ASP连续两季下降且库存上升', sourceTitle: 'Coherent FY2026 Q1 Release', sourceUrl: 'https://www.coherent.com/content/dam/coherent/site/en/documents/investors/financial-releases/2026/november-5/earnings-release-fy26-q1.pdf' },
+  { id: 'SC-09', segment: '半导体设备', oldStatus2024: '扩产中', currentStatus: '景气上行', supplyScore: 1.5, priceMomentum: 1, latestMetric: 'ASML Q1销售88亿欧元、毛利率53%；2026收入指引360亿至400亿欧元', period: '2026 Q1', evidenceType: '公司披露', confidence: '高', leadingIndicator: '订单、客户扩产与交付节奏', reversalSignal: '订单动能转弱或客户CAPEX下修', sourceTitle: 'ASML Q1 2026 Results', sourceUrl: 'https://www.asml.com/en/news/press-releases/2026/q1-2026-financial-results' },
+  { id: 'SC-10', segment: '数据中心电力', oldStatus2024: '终极瓶颈', currentStatus: '结构性紧约束', supplyScore: 2, priceMomentum: 1, latestMetric: 'IEA将AI与数据中心列为2026-2030先进经济体电力需求增长的重要驱动', period: '2026-2030 outlook', evidenceType: '官方机构', confidence: '高', leadingIndicator: '并网排队、PPA与变压器交期', reversalSignal: '电网接入周期明显缩短或项目取消', sourceTitle: 'IEA Electricity 2026 Demand', sourceUrl: 'https://www.iea.org/reports/electricity-2026/demand' },
+];
+
 export const weeks: WeekData[] = [
   {
     week: 1,
