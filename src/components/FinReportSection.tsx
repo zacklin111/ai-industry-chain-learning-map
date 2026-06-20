@@ -582,7 +582,7 @@ export default function FinReportSection() {
               </thead>
               <tbody>
                 {[
-                  { stage: '上升期', color: '#C3FF00', revenue: '增速>50%', margin: '毛利率>70%', inventory: '库存下降/FCF>20%', strategy: '超配GPU/HBM/CoWoS' },
+                  { stage: '结构性紧约束', color: '#C3FF00', revenue: 'GPU/HBM/先进逻辑需求强', margin: 'HBM供应商利润强', inventory: '跟踪库存/交期/CAPEX', strategy: '事实用于定位周期，配置需结合估值与风险' },
                   { stage: '顶部期', color: '#FF9500', revenue: '增速放缓>0%', margin: '毛利率持平', inventory: '库存周转开始上升', strategy: '减配高估值/增配现金' },
                   { stage: '下降期', color: '#FF4444', revenue: '增速<0%', margin: '毛利率收缩', inventory: '库存积压/CAPEX下修', strategy: '低配GPU/光模块' },
                   { stage: '底部期', color: '#00D4FF', revenue: '负增长降幅收窄', margin: '毛利率触底', inventory: '库存去化/FCF恢复', strategy: '布局设备商/存储' },
