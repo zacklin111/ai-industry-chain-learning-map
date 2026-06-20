@@ -319,8 +319,8 @@ export function CoWoSExplodedView() {
         { label: "有机基板 (Organic Substrate)", sublabel: "连接 PCB 载板 → 服务器主板", color: "#888", width: "90%", metric: "底层" },
       ]}
       infoBlocks={[
-        { title: "为什么是瓶颈", color: "#FF4444", items: ["台积电月产能: 3-4万片(2024)", "英伟达包走80%+", "设备交付周期: 18个月", "洁净室空间受限"] },
-        { title: "经济账", color: "#00D4FF", items: ["一片12寸晶圆≈20-25颗H100", "封装成本: $200-300/颗", "台积电2024 CoWoS收入: $80-100亿", "毛利率: 50%+(远高于传统封装)"] },
+        { title: "为什么是瓶颈", color: "#FF4444", items: ["大尺寸CoWoS仍是主流供给", "精确利用率未披露", "跟踪扩产与设备到位", "反转看客户交期"] },
+        { title: "证据口径", color: "#00D4FF", items: ["TSMC 2026 Q1业绩会", "当前状态: 紧缺", "证据置信度: 中高", "不以供应链估算冒充事实"] },
       ]}
     />
   );
@@ -405,7 +405,7 @@ export function DataCenterExplodedView() {
       bgImage="/images/bg-datacenter.jpg"
       accentColor="#00D4FF"
       layers={[
-        { label: "云厂商", sublabel: "微软 / 谷歌 / 亚马逊 / Meta", items: ["CAPEX 2000亿+"], color: "#C3FF00", width: "90%", metric: "$2000亿+" },
+        { label: "需求验证", sublabel: "NVIDIA FY2027 Q1", items: ["收入$816亿", "YoY +85%"], color: "#C3FF00", width: "90%", metric: "$816亿" },
         { label: "数据中心运营商", sublabel: "Equinix / DLR / 万国数据", items: ["机柜租金/托管费"], color: "#00D4FF", width: "80%" },
         { label: "散热系统", sublabel: "Vertiv / 英维克 / 施耐德", items: ["液冷渗透率 15%→60%", "冷板式为主"], color: "#C3FF00", width: "75%", metric: "液冷" },
         { label: "电力设备", sublabel: "变压器 / UPS / 开关柜", items: ["AI机柜 50-100kW", "传统机柜 5-10kW"], color: "#FF9500", width: "70%", metric: "100MW" },
@@ -429,11 +429,12 @@ export function FullMapExplodedView() {
       bgImage="/images/bg-fullmap.jpg"
       accentColor="#C3FF00"
       layers={[
-        { label: "需求端 · 云厂商 CAPEX", sublabel: "微软 / 谷歌 / 亚马逊 / Meta", items: ["2024合计超$2000亿", "80%用于购买GPU"], color: "#C3FF00", width: "90%", metric: "$2000亿+" },
-        { label: "GPU + 网络 · 英伟达 90%+", sublabel: "算力货币 | CUDA生态壁垒 | NVLink捆绑", items: ["H100/B200/GB200", "网络业务毛利70%+"], color: "#C3FF00", width: "80%", metric: "垄断" },
-        { label: "先进封装 · 台积电 CoWoS", sublabel: "产能咽喉 | 3-4万片/月 | 英伟达包走80%+", items: ["硅中介层核心工艺", "扩产需18个月"], color: "#00D4FF", width: "75%", metric: "瓶颈" },
-        { label: "HBM 存储 · SK海力士 50%", sublabel: '"算力燃料" | 供不应求 | DRAM产能挤压', items: ["12层堆叠", "带宽>3TB/s"], color: "#A855F7", width: "70%", metric: "紧缺" },
-        { label: "光模块 / 网络 · 中际旭创 60%", sublabel: "卖水人逻辑 | 800G→1.6T | 中国厂商占60%+", items: ["光芯片/DSP依赖进口", "CPO长期替代"], color: "#00D4FF", width: "78%", metric: "平衡" },
+        { label: "需求端 · AI基础设施收入", sublabel: "NVIDIA FY2027 Q1", items: ["收入$816亿", "YoY +85%"], color: "#C3FF00", width: "90%", metric: "需求强" },
+        { label: "GPU + 网络", sublabel: "收入与交付节奏验证", items: ["当前紧缺", "反转看指引与库存"], color: "#C3FF00", width: "80%", metric: "紧缺" },
+        { label: "先进封装 · 台积电 CoWoS", sublabel: "大尺寸CoWoS仍是主流供给", items: ["精确利用率未披露", "跟踪扩产与设备到位"], color: "#00D4FF", width: "75%", metric: "紧缺" },
+        { label: "HBM 存储", sublabel: "AI高附加值内存需求强", items: ["HBM4量产", "长期协议覆盖"], color: "#A855F7", width: "70%", metric: "紧缺" },
+        { label: "光模块 / 网络", sublabel: "1.6T产品持续导入", items: ["需求强", "统一利用率与ASP披露不足"], color: "#00D4FF", width: "78%", metric: "披露不足" },
+        { label: "成熟制程", sublabel: "UMC 2026 Q1", items: ["UMC利用率79%", "复苏/趋平衡"], color: "#00D4FF", width: "72%", metric: "趋平衡" },
         { label: "数据中心 / 能源", sublabel: '"地产逻辑"→"能源逻辑" | 电力是终极瓶颈', items: ["液冷渗透率15%→60%", "核电签约20年"], color: "#FF9500", width: "85%", metric: "能源" },
       ]}
       caption="投资条件反射：听到任何AI新闻 → 10秒内定位产业链环节 → 5分钟内判断验证/证伪"

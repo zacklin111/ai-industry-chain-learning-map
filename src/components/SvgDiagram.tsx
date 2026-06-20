@@ -210,7 +210,7 @@ export function CoWoSDiagram() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
           <div style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 12px', border: '1px solid rgba(195,255,0,0.1)' }}>
             <div style={{ fontSize: 11, color: '#C3FF00', fontWeight: 600, marginBottom: 6 }}>为什么CoWoS是瓶颈</div>
-            {['台积电月产能: 3-4万片(2024)', '英伟达包走80%+', '设备交付周期: 18个月', '洁净室空间受限', '技术人员培养: 2年+'].map((item, i) => (
+            {['大尺寸CoWoS仍是主流供给', '精确利用率未披露', '跟踪先进封装扩产', '跟踪设备到位', '反转看客户交期'].map((item, i) => (
               <div key={i} style={{ fontSize: 12, color: '#AAAAAA', padding: '2px 0', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ width: 4, height: 4, background: '#C3FF00', borderRadius: '50%' }} />
                 {item}
@@ -219,7 +219,7 @@ export function CoWoSDiagram() {
           </div>
           <div style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 12px', border: '1px solid rgba(195,255,0,0.1)' }}>
             <div style={{ fontSize: 11, color: '#C3FF00', fontWeight: 600, marginBottom: 6 }}>经济账</div>
-            {['一片12寸CoWoS晶圆 ≈ 20-25颗H100', 'CoWoS封装成本: $200-300/颗', '台积电2024 CoWoS收入: $80-100亿', '2025计划翻倍但设备未到', '毛利率: 50%+ (远高于传统封装)'].map((item, i) => (
+            {['公司业绩会披露', '数据周期: 2026 Q1', '当前状态: 紧缺', '证据置信度: 中高', '不以供应链估算冒充事实'].map((item, i) => (
               <div key={i} style={{ fontSize: 12, color: '#AAAAAA', padding: '2px 0', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ width: 4, height: 4, background: '#C3FF00', borderRadius: '50%' }} />
                 {item}
@@ -473,7 +473,7 @@ export function DataCenterEnergyDiagram() {
         {/* Energy flow chain */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 16 }}>
           {[
-            { name: '云厂商', sub: '微软/谷歌/亚马逊/Meta', metric: 'CAPEX 2000亿+', color: '#2A4A6A' },
+            { name: '需求验证', sub: 'NVIDIA FY2027 Q1', metric: '收入$816亿 | YoY +85%', color: '#2A4A6A' },
             { name: '↓', sub: '', metric: '', color: 'transparent' },
             { name: '数据中心运营商', sub: 'Equinix/DLR/万国数据', metric: '机柜租金/托管费', color: '#2A5A5A' },
             { name: '↓', sub: '', metric: '', color: 'transparent' },
@@ -526,12 +526,12 @@ export function DataCenterEnergyDiagram() {
 // ---- Full Investment Map (Day 7) ----
 export function FullInvestmentMapDiagram() {
   const chain = [
-    { level: '需求端', items: ['云厂商CAPEX'], detail: '微软/谷歌/亚马逊/Meta | 2024合计超$2000亿', color: '#2A4A6A' },
+    { level: '需求端', items: ['AI基础设施收入'], detail: 'NVIDIA FY2027 Q1收入$816亿 | YoY +85%', color: '#2A4A6A' },
     { level: '→', items: [], detail: '', color: 'transparent' },
-    { level: 'GPU+网络', items: ['英伟达(90%+)','AMD(~8%)'], detail: '算力货币 | CUDA生态壁垒', color: '#1A4A3A' },
-    { level: '先进封装', items: ['台积电CoWoS'], detail: '产能咽喉 | 3-4万片/月', color: '#2A4A4A' },
-    { level: 'HBM存储', items: ['SK海力士','三星','美光'], detail: '算力燃料 | 供不应求', color: '#2A1A4A' },
-    { level: '光模块/网络', items: ['中际旭创','Arista','博通'], detail: '卖水人逻辑 | 800G→1.6T', color: '#3A3A2A' },
+    { level: 'GPU+网络', items: ['NVIDIA','AMD/自研'], detail: '当前紧缺 | 收入与交付节奏验证', color: '#1A4A3A' },
+    { level: '先进封装', items: ['台积电CoWoS'], detail: '紧缺 | 精确利用率未披露', color: '#2A4A4A' },
+    { level: 'HBM存储', items: ['SK海力士','三星','美光'], detail: '紧缺 | HBM4量产验证', color: '#2A1A4A' },
+    { level: '光模块/网络', items: ['1.6T高速互连'], detail: '需求强 | 披露不足', color: '#3A3A2A' },
     { level: '数据中心/能源', items: ['Vertiv','Equinix','核电'], detail: '地产逻辑→能源逻辑', color: '#4A2A2A' },
   ];
 
@@ -539,8 +539,8 @@ export function FullInvestmentMapDiagram() {
     { segment: 'GPU', priceDriver: '英伟达定价权', supply: '紧缺', cycle: '高位震荡', indicator: '台积电CoWoS产能利用率' },
     { segment: 'HBM', priceDriver: 'DRAM转产比例', supply: '紧缺', cycle: '供不应求', indicator: 'SK海力士产能指引' },
     { segment: 'CoWoS', priceDriver: '台积电产能利用率', supply: '紧缺', cycle: '价格上升', indicator: '设备交付周期' },
-    { segment: '光模块', priceDriver: '技术迭代800G→1.6T', supply: '平衡', cycle: '800G放量', indicator: '云厂商网络CAPEX' },
-    { segment: '晶圆代工', priceDriver: '产能利用率+制程溢价', supply: '分化', cycle: '3nm满载', indicator: '台积电法说会指引' },
+    { segment: '光模块', priceDriver: '1.6T认证与出货', supply: '需求强', cycle: '披露不足', indicator: 'ASP与DSP供应' },
+    { segment: '成熟制程', priceDriver: '产能利用率', supply: '趋平衡', cycle: 'UMC利用率79%', indicator: '利用率与22nm占比' },
   ];
 
   return (

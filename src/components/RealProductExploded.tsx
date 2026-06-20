@@ -435,7 +435,7 @@ export function GpuProductExplodedView() {
       ]}
       infoBlocks={[
         { title: "核心认知", color: "#C3FF00", items: ["H100不是一颗Die，是系统级封装(SiP)", "内存墙决定HBM不可替代性(>3TB/s)", "NVLink是隐形护城河(900GB/s)", "6颗HBM3E环绕GPU核心布置"] },
-        { title: "投资含义", color: "#FF9500", items: ["CoWoS封装是产能咽喉(3-4万片/月)", "HBM产能直接决定GPU出货量", "台积电掌握核心工艺，毛利率50%+", "英伟达捆绑销售：网络业务毛利70%+"] },
+        { title: "当前供需验证", color: "#FF9500", items: ["NVIDIA FY2027 Q1收入$816亿，YoY +85%", "CoWoS紧缺但精确利用率未披露", "HBM需求强，跟踪HBM4量产", "事实用于定位周期，不等同确定性建议"] },
       ]}
     />
   );
@@ -511,8 +511,8 @@ export function CoWoSProductExplodedView() {
         { from: 3, to: 4, label: "BGA焊球", color: "#FF9500" },
       ]}
       infoBlocks={[
-        { title: "为什么是瓶颈", color: "#FF4444", items: ["台积电月产能: 3-4万片(2024)", "英伟达包走80%+", "设备交付: 18个月", "洁净室空间受限"] },
-        { title: "经济账", color: "#00D4FF", items: ["一片12寸晶圆≈20-25颗H100", "封装成本: $200-300/颗", "2024 CoWoS收入: $80-100亿", "毛利率: 50%+(传统仅20-30%)"] },
+        { title: "为什么是瓶颈", color: "#FF4444", items: ["大尺寸CoWoS仍是主流供给", "精确利用率未披露", "跟踪扩产与设备到位", "反转看客户交期"] },
+        { title: "证据口径", color: "#00D4FF", items: ["TSMC 2026 Q1业绩会", "当前状态: 紧缺", "证据置信度: 中高", "不以供应链估算冒充事实"] },
       ]}
     />
   );
@@ -677,7 +677,7 @@ export function FoundryProductExplodedView() {
       ]}
       infoBlocks={[
         { title: "设备商卖水人逻辑", color: "#FF9500", items: ["无论台积电/三星/Intel谁赢", "都需要ASML的EUV设备", "设备周期滞后芯片6-12个月", "ASML订单book-to-bill>1=扩产"] },
-        { title: "台积电双轨制", color: "#C3FF00", items: ["先进制程(3nm): 苹果独占, 毛利率50-55%", "特色封装(CoWoS): AI芯片, 毛利率50%+", "CoWoS产能利用率100%(瓶颈)"] },
+        { title: "制程分化", color: "#C3FF00", items: ["先进逻辑需求超过供给", "成熟制程复苏/趋平衡", "UMC利用率79%", "CoWoS精确利用率未披露"] },
       ]}
     />
   );
@@ -756,7 +756,7 @@ export function FullMapProductExplodedView() {
           image: "/images/parts/server-rack.png",
           label: "需求端 · 云厂商 CAPEX",
           sublabel: "MSFT / GOOG / AMZN / META",
-          metric: "$2000亿+ | 80%买GPU",
+          metric: "NVIDIA FY2027 Q1收入$816亿",
           width: "68%",
           leftOffset: "6%",
           type: "large",
@@ -764,9 +764,9 @@ export function FullMapProductExplodedView() {
         {
           num: "②",
           image: "/images/parts/gpu-die.png",
-          label: "GPU · 英伟达90%+",
-          sublabel: "NVIDIA(90%+) | CUDA生态壁垒",
-          metric: "H100/B200/GB200",
+          label: "GPU · 当前紧缺",
+          sublabel: "NVIDIA / AMD / 自研加速器",
+          metric: "收入、指引与交付节奏验证",
           width: "38%",
           leftOffset: "16%",
           type: "large",
@@ -775,8 +775,8 @@ export function FullMapProductExplodedView() {
           num: "③",
           image: "/images/parts/silicon-interposer.png",
           label: "CoWoS · 台积电产能咽喉",
-          sublabel: "台积电(TSM) | CoWoS垄断90%+",
-          metric: "英伟达包走80%+",
+          sublabel: "大尺寸CoWoS仍是主流供给",
+          metric: "精确利用率未披露",
           width: "58%",
           leftOffset: "9%",
           type: "medium",
@@ -794,9 +794,9 @@ export function FullMapProductExplodedView() {
         {
           num: "⑤",
           image: "/images/parts/optical-module.png",
-          label: "光模块 · 中际旭创60%",
-          sublabel: "中际旭创(60%+) / Coherent / 新易盛",
-          metric: "800G→1.6T→3.2T",
+          label: "光模块 · 需求强",
+          sublabel: "1.6T产品持续导入",
+          metric: "统一利用率与ASP披露不足",
           width: "48%",
           leftOffset: "13%",
           type: "medium",
