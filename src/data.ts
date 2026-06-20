@@ -7,6 +7,8 @@ export interface DayContent {
   keyInsights: string[];
   investmentRotation: string[];
   image?: string;
+  updatedAt?: string;
+  sources?: DaySource[];
 }
 
 export interface WeekData {
@@ -42,6 +44,13 @@ export interface SupplyCycleSnapshotItem {
   sourceUrl: string;
 }
 
+export interface DaySource {
+  title: string;
+  url: string;
+  evidenceType: SupplyEvidenceType;
+  confidence: SupplyCycleSnapshotItem['confidence'];
+}
+
 export const supplyCycleAsOf = '2026-06-20';
 
 export const supplyCycleSnapshot2026: SupplyCycleSnapshotItem[] = [
@@ -56,6 +65,23 @@ export const supplyCycleSnapshot2026: SupplyCycleSnapshotItem[] = [
   { id: 'SC-09', segment: '半导体设备', oldStatus2024: '扩产中', currentStatus: '景气上行', supplyScore: 1.5, priceMomentum: 1, latestMetric: 'ASML Q1销售88亿欧元、毛利率53%；2026收入指引360亿至400亿欧元', period: '2026 Q1', evidenceType: '公司披露', confidence: '高', leadingIndicator: '订单、客户扩产与交付节奏', reversalSignal: '订单动能转弱或客户CAPEX下修', sourceTitle: 'ASML Q1 2026 Results', sourceUrl: 'https://www.asml.com/en/news/press-releases/2026/q1-2026-financial-results' },
   { id: 'SC-10', segment: '数据中心电力', oldStatus2024: '终极瓶颈', currentStatus: '结构性紧约束', supplyScore: 2, priceMomentum: 1, latestMetric: 'IEA将AI与数据中心列为2026-2030先进经济体电力需求增长的重要驱动', period: '2026-2030 outlook', evidenceType: '官方机构', confidence: '高', leadingIndicator: '并网排队、PPA与变压器交期', reversalSignal: '电网接入周期明显缩短或项目取消', sourceTitle: 'IEA Electricity 2026 Demand', sourceUrl: 'https://www.iea.org/reports/electricity-2026/demand' },
 ];
+
+const currentSupplyRows = supplyCycleSnapshot2026.map((item) => [
+  item.segment,
+  item.currentStatus,
+  item.priceMomentum > 1 ? '↑↑' : item.priceMomentum > 0 ? '↑' : '→',
+  item.latestMetric,
+  item.period,
+  item.leadingIndicator,
+  item.reversalSignal,
+]);
+
+const currentSupplySources: DaySource[] = supplyCycleSnapshot2026.map((item) => ({
+  title: item.sourceTitle,
+  url: item.sourceUrl,
+  evidenceType: item.evidenceType,
+  confidence: item.confidence,
+}));
 
 export const weeks: WeekData[] = [
   {
@@ -507,6 +533,8 @@ export const weeks: WeekData[] = [
         coreInsight: "半导体是\'周期成长股\'，AI是超级周期中的子周期",
         duration: "2小时",
         image: "/images/market-cycle-chart.jpg",
+        updatedAt: supplyCycleAsOf,
+        sources: currentSupplySources,
         tables: [
           {
             headers: ["周期类型", "特征"],
@@ -516,18 +544,14 @@ export const weeks: WeekData[] = [
             ],
           },
           {
-            headers: ["环节", "2024年Q4周期位置"],
-            rows: [
-              ["GPU/CoWoS/HBM", "供不应求，价格高位，扩产中"],
-              ["光模块（800G）", "供需平衡，1.6T即将供不应求"],
-              ["成熟制程（28nm+）", "产能过剩，价格战"],
-              ["标准DRAM", "供需偏紧（HBM挤压产能）"],
-              ["NAND Flash", "供过于求，涨价乏力"],
-            ],
+            headers: ["环节", "截至2026-06-20的周期位置", "价格动量", "最新指标", "数据周期", "领先指标", "反转信号"],
+            rows: currentSupplyRows,
           },
         ],
         keyInsights: [
-          "周期位置判断：GPU/CoWoS/HBM供不应求，光模块800G供需平衡，成熟制程产能过剩",
+          "事实：GPU、CoWoS、HBM与先进逻辑仍处紧约束；标准DRAM和NAND在2026 Q2预测中显著涨价。",
+          "事实：成熟制程利用率恢复至79%，状态从2024年的产能过剩转为复苏/趋平衡。",
+          "推断：光模块需求较强，但缺少统一利用率与ASP口径，置信度低于其他环节。",
         ],
         investmentRotation: [
           "AI训练需求持续 → 算力芯片持续短缺 → 硬件层利润确定性高",

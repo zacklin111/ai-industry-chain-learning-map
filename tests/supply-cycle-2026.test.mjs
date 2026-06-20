@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { supplyCycleAsOf, supplyCycleSnapshot2026 } from '../src/data.ts'
+import { supplyCycleAsOf, supplyCycleSnapshot2026, weeks } from '../src/data.ts'
 
 test('2026 supply-cycle snapshot is complete and auditable', () => {
   assert.equal(supplyCycleAsOf, '2026-06-20')
@@ -24,4 +24,16 @@ test('the three material 2026 reversals are explicit', () => {
   assert.equal(bySegment.get('NAND Flash')?.currentStatus, '严重紧缺')
   assert.equal(bySegment.get('标准DRAM')?.currentStatus, '严重紧缺')
   assert.equal(bySegment.get('成熟制程')?.currentStatus, '复苏/趋平衡')
+})
+
+test('week 3 exposes the current snapshot without deleting history', () => {
+  const week3 = weeks.find((week) => week.week === 3)
+  const currentDay = week3?.days.find((day) => day.day === 15)
+  assert.equal(currentDay?.updatedAt, supplyCycleAsOf)
+  assert.equal(currentDay?.sources?.length, 10)
+  assert.equal(currentDay?.tables[1].rows.length, 10)
+  assert.equal(currentDay?.tables[1].headers[1], '截至2026-06-20的周期位置')
+
+  const historicalCase = week3?.days.find((day) => day.day === 19)
+  assert.ok(historicalCase?.tables.some((table) => table.headers.includes('当前水平（2024）')))
 })

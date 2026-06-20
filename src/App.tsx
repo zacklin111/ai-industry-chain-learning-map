@@ -697,6 +697,11 @@ function DayCard({ day, weekColor }: { day: typeof weeks[0]['days'][0]; weekColo
           <span className="pill pill-accent" style={{ background: weekColor }}>
             {day.duration}
           </span>
+          {day.updatedAt && (
+            <div style={{ marginTop: 12, fontSize: 12, color: weekColor }}>
+              数据截至 {day.updatedAt}
+            </div>
+          )}
         </div>
 
         {/* Right column - Content */}
@@ -781,6 +786,45 @@ function DayCard({ day, weekColor }: { day: typeof weeks[0]['days'][0]; weekColo
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {day.sources && day.sources.length > 0 && (
+            <div style={{ marginBottom: 20 }}>
+              <h4 style={{
+                fontFamily: "'Noto Sans SC', sans-serif",
+                fontSize: 14,
+                fontWeight: 500,
+                color: weekColor,
+                marginBottom: 12,
+              }}>
+                数据来源与证据等级
+              </h4>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: 8,
+              }}>
+                {day.sources.map((source) => (
+                  <a
+                    key={`${source.title}-${source.evidenceType}`}
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      color: '#FFFFFF',
+                      border: '1px solid #242424',
+                      padding: 12,
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <div style={{ color: weekColor, fontSize: 12 }}>
+                      {source.evidenceType} · 置信度{source.confidence}
+                    </div>
+                    <div style={{ fontSize: 12, marginTop: 4 }}>{source.title}</div>
+                  </a>
+                ))}
+              </div>
             </div>
           )}
 
