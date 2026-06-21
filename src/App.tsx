@@ -1170,7 +1170,7 @@ function Footer() {
         fontSize: 12,
         color: '#7A7A7A',
       }}>
-        © 2025 AI Chain Learning System
+        © 2026 AI Chain Learning System
       </div>
     </footer>
   );

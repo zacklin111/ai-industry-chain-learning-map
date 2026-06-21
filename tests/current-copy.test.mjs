@@ -9,6 +9,12 @@ test('financial report summary labels the current 2026 position without determin
   assert.doesNotMatch(source, /stage: '上升期'.*超配GPU\/HBM\/CoWoS/)
 })
 
+test('site footer uses the current publication year', async () => {
+  const source = await readFile('src/App.tsx', 'utf8')
+  assert.match(source, /© 2026 AI Chain Learning System/)
+  assert.doesNotMatch(source, /© 2025 AI Chain Learning System/)
+})
+
 test('visual components do not present stale estimates as current facts', async () => {
   const visualFiles = [
     'src/components/SvgDiagram.tsx',
